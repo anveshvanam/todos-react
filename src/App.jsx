@@ -136,10 +136,13 @@ function App() {
                 <ListItemButton
                   role={undefined}
                   onClick={() => handleToggleTodo(todo.id)}
-                  className="w-1/2 h-full"
+                  className="w-full h-full"
                 >
                   <Checkbox checked={todo.isCompleted} disableRipple />
-                  <ListItemText primary={todo.text} className="h-full w-40" />
+                  <ListItemText
+                    primary={todo.text}
+                    className="h-full w-10 break-words"
+                  />
                 </ListItemButton>
                 <div className="flex gap-2">
                   <Button
