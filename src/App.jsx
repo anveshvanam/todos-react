@@ -85,7 +85,7 @@ function App() {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center lg:p-10 gap-10">
+    <div className="flex flex-col justify-center items-center pr-3 lg:p-10 gap-10">
       <h1 className="text-4xl font-bold">Todo App</h1>
       <div className="flex items-center justify-center gap-5">
         <TextField
@@ -104,7 +104,7 @@ function App() {
           Add
         </Button>
       </div>
-      <List sx={{ width: "100%" }} className="w-full lg:w-1/2">
+      <List className="w-full lg:w-1/2">
         {todos.map((todo) => (
           <ListItem key={todo.id} disablePadding>
             {editTodoId === todo.id ? (
