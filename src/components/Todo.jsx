@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { v4 as uuidv4 } from "uuid";
@@ -7,8 +9,10 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import Checkbox from "@mui/material/Checkbox";
+import { useNavigate } from "react-router-dom";
 
 function Todo() {
+  const navigate = useNavigate();
   const [todo, setTodo] = useState("");
   const [todos, setTodos] = useState([]);
   const [editTodoId, setEditTodoId] = useState(null);
@@ -84,9 +88,29 @@ function Todo() {
     setEditTodoText("");
   };
 
+  const handleLogout = () => {
+    localStorage.setItem("isLoggedIn", false);
+    localStorage.removeItem("username");
+    localStorage.removeItem("password");
+    navigate("/login");
+  };
+
   return (
-    <div className="flex flex-col justify-center items-center pr-3 lg:p-10 gap-10">
-      <h1 className="text-4xl font-bold">Todo App</h1>
+    <div className="flex flex-col justify-center py-4 items-center pr-3 lg:p-10 gap-10">
+      <div className="flex justify-around items-center w-full mb-10">
+        <h1 className="text-4xl font-bold">Todo App</h1>
+        <div className="flex gap-5 items-center">
+          <Button variant="contained" color="error" onClick={handleLogout}>
+            Logout
+          </Button>
+          <Link to="/profile">
+            <AccountCircleIcon
+              fontSize="large"
+              className="ml-4 cursor-pointer hover:text-blue-500"
+            />
+          </Link>
+        </div>
+      </div>
       <div className="flex items-center justify-center gap-5">
         <TextField
           className="w-48 lg:w-72"

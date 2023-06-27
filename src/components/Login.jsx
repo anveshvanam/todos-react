@@ -1,4 +1,6 @@
 import * as React from "react";
+import { useNavigate } from "react-router-dom";
+
 import { Link } from "react-router-dom";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
@@ -9,9 +11,9 @@ import FormControl from "@mui/material/FormControl";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { Button } from "@mui/material";
-import { set } from "date-fns";
 
 function Login() {
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = React.useState(false);
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
@@ -29,7 +31,7 @@ function Login() {
     const storedPass = localStorage.getItem("password");
     if (username === storedUser && password === storedPass) {
       localStorage.setItem("isLoggedIn", true);
-      window.location.navigate("/");
+      navigate("/");
       setShowError(false);
       setErrorMessage("");
     } else {
@@ -43,6 +45,8 @@ function Login() {
       sx={{ display: "flex", flexWrap: "wrap" }}
       className="flex flex-col min-h-screen  justify-center items-center "
     >
+      <h1 className="text-4xl font-bold mb-7">Login</h1>
+
       <div className="flex flex-col justify-center items-center shadow-sm rounded-md shadow-slate-600 lg:h-[70vh] w-[95%] lg:w-1/2 h-96">
         <FormControl variant="standard">
           <InputLabel htmlFor="standard-adornment-username">
@@ -84,7 +88,7 @@ function Login() {
           <Button
             variant="contained"
             color="primary"
-            onChange={handleLogin}
+            onClick={handleLogin}
             className="w-28 lg:w-40 h-10 m-10"
           >
             Login
@@ -94,7 +98,7 @@ function Login() {
             color="secondary"
             className="w-28 lg:w-40 h-10 m-10"
           >
-            <Link to="/registration" className="">
+            <Link to="/register" className="">
               Register
             </Link>
           </Button>
