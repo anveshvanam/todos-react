@@ -132,7 +132,7 @@ function Todo() {
         {todos.map((todo) => (
           <ListItem key={todo.id} disablePadding>
             {editTodoId === todo.id ? (
-              <div className="w-full">
+              <div className="p-3 w-full">
                 <TextField
                   value={editTodoText}
                   onChange={(e) => setEditTodoText(e.target.value)}
@@ -171,8 +171,14 @@ function Todo() {
                 <div className="flex gap-2">
                   <Button
                     variant="outlined"
+                    className="h-8 w-20 text-xs  lg:text-4xl"
+                  >
+                    <Link to={`/todo/${todo.id}`}>View</Link>
+                  </Button>
+                  <Button
+                    variant="outlined"
                     onClick={() => handleEditTodo(todo.id)}
-                    className="h-8 w-20 text-sm"
+                    className="h-8 w-20 text-xs  lg:text-4xl"
                   >
                     Edit
                   </Button>

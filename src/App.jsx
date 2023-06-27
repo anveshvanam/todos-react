@@ -3,6 +3,7 @@ import { Routes, Route, Link } from "react-router-dom";
 import Todo from "./components/Todo";
 import Registration from "./components/Registration";
 import Profile from "./components/Profile";
+import TodoItem from "./components/TodoItem";
 
 function App() {
   return (
@@ -12,6 +13,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route exact path="/" element={<Todo />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/todo/:id" element={<TodoItem />} />
+        <Route path="*" element={<h1>404 Not Found</h1>} />
       </Routes>
     </div>
   );
